@@ -1,0 +1,9 @@
+Model: Bowman SNLI
+
+Model test accuracy: 79.204%
+Total test examples: 9824
+Correct predictions: 7781
+
+Model loading time: 0.65s
+Dataset loading time: 1.21s
+Evaluation time: 8.16s

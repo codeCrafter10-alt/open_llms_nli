@@ -1,0 +1,8 @@
+torch
+numpy
+pandas
+spacy
+tqdm
+
+# Required SpaCy language model (install separately):
+# python -m spacy download en_core_web_sm
