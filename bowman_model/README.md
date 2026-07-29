@@ -17,7 +17,7 @@ Bowman Model achieved an accuracy of 79.204% on the SNLI test set. See [results.
 
 The evaulation script also records runtime information:
 - Model loading time: 0.65 seconds
-- Dataset loading time: 1.21 seconds
+- Dataset loading time: 1.21 seconds for 10,000 test examples
 - Evaluation time: 8.16 seconds
 
 These are stored in `results.txt` and printed in terminal
