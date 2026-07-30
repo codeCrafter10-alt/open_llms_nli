@@ -21,12 +21,12 @@ See [`code/prompt.py`](code/prompt.py) for the exact prompt
 Using Mistral-7B-Instruct-v0.2. See https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2 for more info.
 
 ### Results
-The Mistral-7B-Instruct-v0.2 achieved an accuracy of 79.204% on the SNLI test data. See [results.txt](results.txt)
+The Mistral-7B-Instruct-v0.2 achieved an accuracy of 68.8% on the SNLI test data for 1,000 test examples. See [results.txt](results.txt)
 
 The evaulation script also records runtime information:
-- Model loading time:  seconds
-- Dataset loading time:  seconds for 1,000 test examples
-- Evaluation time:  seconds
+- Model loading time: 44.25 seconds
+- Dataset loading time: 0.22 seconds for 1,000 test examples
+- Evaluation time: 7705.49 seconds
 
 These are stored in `results.txt` and printed in terminal
 
