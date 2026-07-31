@@ -23,8 +23,9 @@ def load_model():
     tokenizer.pad_token = tokenizer.eos_token
     bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16, bnb_4bit_quant_type="nf4")
     model = AutoModelForSequenceClassification.from_pretrained(model_name, device_map="auto", quantization_config=bnb_config, num_labels=3)
-    model.config.pad_token_id = tokenizer.pad_token_id
     model = PeftModel.from_pretrained(model, adapter_path)
+    model.config.pad_token_id = tokenizer.pad_token_id
+    model.config.problem_type = "single_label_classification"
 
     model.eval()
     print(model.device)

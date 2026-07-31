@@ -6,7 +6,7 @@ import torch
 import time
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, BitsAndBytesConfig, DataCollatorWithPadding
-from peft import LoraConfig, get_peft_model, TaskType
+from peft import LoraConfig, get_peft_model, TaskType, prepare_model_for_kbit_training
 
 from dataset import load_dataset, prepare_data
 
@@ -48,13 +48,19 @@ def main():
     bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16, bnb_4bit_quant_type="nf4")
 
     model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3, quantization_config=bnb_config, device_map="auto")
+
     model.config.pad_token_id = tokenizer.pad_token_id
-    model.config.use_cache = False 
+    model.config.use_cache = False
+    model.config.problem_type = "single_label_classification"
+
+    model = prepare_model_for_kbit_training(model)
+
+    model.enable_input_require_grads()
 
     model_time = time.time() - model_start
     print(f"Model loaded in {model_time:.2f} seconds.")
 
-    lora_config = LoraConfig(task_type=TaskType.SEQ_CLS, r=16, lora_alpha=32, lora_dropout=0.05, bias="none", target_modules=["q_proj", "k_proj", "v_proj", "o_proj"])
+    lora_config = LoraConfig(task_type=TaskType.SEQ_CLS, r=16, lora_alpha=32, lora_dropout=0.05, bias="none", target_modules=["q_proj", "k_proj", "v_proj", "o_proj"], modules_to_save=["score"])
     model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
 
