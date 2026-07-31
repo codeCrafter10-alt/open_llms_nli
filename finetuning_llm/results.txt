@@ -1,9 +1,9 @@
-Model: Mistral-7B-Instruct-v0.2
+Model: Mistral-7B-v0.1
 
-Model test accuracy: 68.800%
+Model test accuracy: 88.500%
 Total test examples: 1000
-Correct predictions: 688
+Correct predictions: 885
 
-Model loading time: 44.25s
-Dataset loading time: 0.22s
-Evaluation time: 7705.49s
+Model loading time: 48.39s
+Dataset loading time: 3.16s
+Evaluation time: 112.86s
