@@ -39,6 +39,9 @@ def prepare_data(df, limit=None):
 
     # Remove examples where annotators disagreed on the label
     df = df[df['gold_label'] != '-'].copy()
+
+    df = df.dropna(subset=['sentence1', 'sentence2', 'gold_label'])
+
     if limit is not None:
         df = df.head(limit)
 
