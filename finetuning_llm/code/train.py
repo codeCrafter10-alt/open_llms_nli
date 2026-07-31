@@ -10,7 +10,7 @@ from peft import LoraConfig, get_peft_model, TaskType
 
 from dataset import load_dataset, prepare_data
 
-model_name = "mistralai/Mistral-7B-v0.2"
+model_name = "mistralai/Mistral-7B-v0.1"
 train_file = "data/snli_1.0/snli_1.0_train.txt"
 dev_file = "data/snli_1.0/snli_1.0_dev.txt"
 

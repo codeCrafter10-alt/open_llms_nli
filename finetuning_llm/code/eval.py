@@ -1,5 +1,5 @@
 """
-Evaluate accuracy of Mistral-7B-v0.2 model on NLI task using SNLI dataset.
+Evaluate accuracy of Mistral-7B-v0.1 model on NLI task using SNLI dataset.
 """
 
 import time
@@ -9,7 +9,7 @@ from peft import PeftModel
 
 from dataset import load_dataset, prepare_data
 
-model_name = "mistralai/Mistral-7B-v0.2"
+model_name = "mistralai/Mistral-7B-v0.1"
 adapter_path = "./results/finetuned_model"
 test_file = "data/snli_1.0/snli_1.0_test.txt"
 
@@ -87,7 +87,7 @@ def main():
 
     # Save results to results.txt
     with open("results.txt", "w") as f:
-        f.write("Model: Mistral-7B-v0.2\n\n")
+        f.write("Model: Mistral-7B-v0.1\n\n")
         f.write(f"Model test accuracy: {100*accuracy:.3f}%\n")
         f.write(f"Total test examples: {len(test_dataset)}\n")
         f.write(f"Correct predictions: {correct_predictions}\n\n")
